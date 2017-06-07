@@ -43,14 +43,13 @@ void insertNode(struct trieNode* root, string s){
 }
 
 int partial_search(struct trieNode*root, string s){
-    int Count = 0;
     int n = s.size();
 
     struct trieNode*cur = root;
 
     for (int i =0; i <n; i ++){
         int j = ALPHABET_INDEX(s[i]); //index of the character in the alphabet --> look up that on the array of children in cur node
-        if(!cur->children[j]) return Count; // if in the middle of the string, we cannot find children --> no word
+        if(!cur->children[j]) return 0; // if in the middle of the string, we cannot find children --> no word
         else cur = cur->children[j];
     };
     return cur->no_words;
